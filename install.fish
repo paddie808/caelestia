@@ -118,22 +118,26 @@ if ! set -q _flag_noconfirm
 end
 
 
-# Install AUR helper if not already installed
-if ! pacman -Q $aur_helper &> /dev/null
-    log "$aur_helper not installed. Installing..."
+if test $(lsb_release -is) = Gentoo
+    emerge -v gui-wm/caelestia-meta
+else
+    # Install AUR helper if not already installed
+    if ! pacman -Q $aur_helper &> /dev/null
+        log "$aur_helper not installed. Installing..."
 
-    # Install
-    sudo pacman -S --needed git base-devel $noconfirm
-    cd /tmp
-    git clone https://aur.archlinux.org/$aur_helper.git
-    cd $aur_helper
-    makepkg -si
-    cd ..
-    rm -rf $aur_helper
+        # Install
+        sudo pacman -S --needed git base-devel $noconfirm
+        cd /tmp
+        git clone https://aur.archlinux.org/$aur_helper.git
+        cd $aur_helper
+        makepkg -si
+        cd ..
+        rm -rf $aur_helper
 
-    # Setup
-    $aur_helper -Y --gendb
-    $aur_helper -Y --devel --save
+        # Setup
+        $aur_helper -Y --gendb
+        $aur_helper -Y --devel --save
+    end
 end
 
 # Install metapackage for deps
