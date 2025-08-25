@@ -1,4 +1,5 @@
 /hypr/scheme/current.conf
+hypr/hyprland/custom-by-hostname.conf
 
 /spicetify/config-xpui.ini
 /spicetify/Themes/caelestia/color.ini
@@ -8,4 +9,4 @@
 
 /fish/fish_variables
 
-/vscode/settings.json
+vscode/settings.json
