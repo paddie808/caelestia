@@ -9,4 +9,6 @@ hypr/hyprland/custom-by-hostname.conf
 
 /fish/fish_variables
 
-vscode/settings.json
+/vscode/settings.json
+
+.SRCINFO
